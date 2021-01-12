@@ -1,20 +1,20 @@
-using Game.Scripts;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Physics;
-using Unity.Transforms;
 
-public class MovableSystem : SystemBase
+namespace Game.Scripts
 {
-    protected override void OnUpdate()
+    public class MovableSystem : SystemBase
     {
-        var deltaTime = Time.DeltaTime;
-        Entities
-            .ForEach((ref PhysicsVelocity velocity, in MovableComponent movable) =>
-            {
-                var step = movable.Speed * movable.Direction;
-                velocity.Linear = step;
-            })
-            .Schedule();
+        protected override void OnUpdate()
+        {
+            var deltaTime = Time.DeltaTime;
+            Entities
+                .ForEach((ref PhysicsVelocity velocity, in MovableComponent movable) =>
+                {
+                    var step = movable.Speed * movable.Direction;
+                    velocity.Linear = step;
+                })
+                .Schedule();
+        }
     }
 }

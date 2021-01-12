@@ -1,19 +1,20 @@
-using Game.Scripts;
 using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Transforms;
 using UnityEngine;
 
-public class PlayerSystem : SystemBase
+namespace Game.Scripts
 {
-    protected override void OnUpdate()
+    public class PlayerSystem : SystemBase
     {
-        var x = Input.GetAxis("Horizontal");
-        var z = Input.GetAxis("Vertical");
+        protected override void OnUpdate()
+        {
+            var x = Input.GetAxis("Horizontal");
+            var z = Input.GetAxis("Vertical");
 
-        Entities
-            .WithAll<PlayerComponent>()
-            .ForEach((ref MovableComponent movable) => { movable.Direction = new float3(x, 0, z); })
-            .Schedule();
+            Entities
+                .WithAll<PlayerComponent>()
+                .ForEach((ref MovableComponent movable) => { movable.Direction = new float3(x, 0, z); })
+                .Schedule();
+        }
     }
 }

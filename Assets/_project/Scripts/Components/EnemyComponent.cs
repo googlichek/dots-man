@@ -8,5 +8,4 @@ namespace Game.Scripts
     {
         public float3 PreviousCell;
     }
-
 }

@@ -16,7 +16,7 @@ namespace Game.Scripts
                     Collisions[collisionEvent.EntityA].Add(new CollisionBuffer { Entity = collisionEvent.EntityB });
                 
                 if (Collisions.HasComponent(collisionEvent.EntityB))
-                    Collisions[collisionEvent.EntityA].Add(new CollisionBuffer { Entity = collisionEvent.EntityA });
+                    Collisions[collisionEvent.EntityB].Add(new CollisionBuffer { Entity = collisionEvent.EntityA });
             }
         }
         
@@ -30,7 +30,7 @@ namespace Game.Scripts
                     Triggers[triggerEvent.EntityA].Add(new TriggerBuffer { Entity = triggerEvent.EntityB });
 
                 if (Triggers.HasComponent(triggerEvent.EntityB))
-                    Triggers[triggerEvent.EntityA].Add(new TriggerBuffer { Entity = triggerEvent.EntityA });
+                    Triggers[triggerEvent.EntityB].Add(new TriggerBuffer { Entity = triggerEvent.EntityA });
             }
         }
 

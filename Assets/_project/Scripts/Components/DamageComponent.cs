@@ -3,7 +3,8 @@ using Unity.Entities;
 namespace Game.Scripts
 {
     [GenerateAuthoringComponent]
-    public struct PlayerComponent : IComponentData
+    public struct DamageComponent : IComponentData
     {
+        public float Value;
     }
 }

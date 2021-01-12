@@ -1,6 +1,7 @@
 using Game.Scripts;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics;
 using Unity.Transforms;
 
 public class MovableSystem : SystemBase
@@ -9,11 +10,11 @@ public class MovableSystem : SystemBase
     {
         var deltaTime = Time.DeltaTime;
         Entities
-            .ForEach((ref MovableComponent movable, ref Translation translation, ref Rotation rotation) =>
-                {
-                    translation.Value += movable.Speed * movable.Direction * deltaTime;
-                    rotation.Value = math.mul(rotation.Value.value, quaternion.RotateY(movable.Speed * deltaTime));
-                })
+            .ForEach((ref PhysicsVelocity velocity, in MovableComponent movable) =>
+            {
+                var step = movable.Speed * movable.Direction;
+                velocity.Linear = step;
+            })
             .Schedule();
     }
 }

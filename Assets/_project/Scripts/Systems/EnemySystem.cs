@@ -7,7 +7,7 @@ using Unity.Transforms;
 
 namespace Game.Scripts
 {
-    [UpdateAfter(typeof(EndFramePhysicsSystem))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     public class EnemySystem : SystemBase
     {
         private const float DistanceDelta = 0.9f;

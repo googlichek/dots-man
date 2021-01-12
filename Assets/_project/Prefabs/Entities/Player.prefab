@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7967842199523600292}
   - component: {fileID: 7967842199523600295}
   - component: {fileID: 7967842199523600294}
+  - component: {fileID: 3251853823516309718}
   - component: {fileID: 7967842199523600288}
   m_Layer: 0
   m_Name: Player
@@ -164,7 +165,7 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_CollisionResponse:
       m_Override: 0
-      m_Value: 0
+      m_Value: 1
     m_Friction:
       m_Override: 0
       m_Value:
@@ -308,6 +309,18 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
+--- !u!114 &3251853823516309718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967842199523600303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6e5a2650d9a5f4d88a7b69f04bf00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7967842199523600288
 MonoBehaviour:
   m_ObjectHideFlags: 0

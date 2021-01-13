@@ -36,7 +36,7 @@ namespace Game.Scripts
                 .Run();
 
             var entityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
-            var entityCommandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
+            var entityCommandBuffer = entityCommandBufferSystem.CreateCommandBuffer();
 
             Entities
                 .ForEach((Entity entity, int entityInQueryIndex, ref KillComponent kill) =>
@@ -44,9 +44,10 @@ namespace Game.Scripts
                     kill.Timer -= deltaTime;
 
                     if (kill.Timer <= 0)
-                        entityCommandBuffer.DestroyEntity(entityInQueryIndex, entity);
+                        entityCommandBuffer.DestroyEntity(entity);
                 })
-                .Schedule();
+                .WithoutBurst()
+                .Run();
 
             entityCommandBufferSystem.AddJobHandleForProducer(Dependency);
         }

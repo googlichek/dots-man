@@ -5,6 +5,6 @@ namespace Game.Scripts
     [GenerateAuthoringComponent]
     public struct CollectableComponent : IComponentData
     {
-        public float Points;
+        public int Points;
     }
 }

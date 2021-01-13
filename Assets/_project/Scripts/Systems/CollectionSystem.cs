@@ -20,6 +20,7 @@ namespace Game.Scripts
                         if (HasComponent<CollectableComponent>(entity) && !HasComponent<KillComponent>(entity))
                         {
                             entityCommandBuffer.AddComponent(entity, new KillComponent() { Timer = 0 });
+                            GameManager.Instance.AddPoints(GetComponent<CollectableComponent>(entity).Points);
                         }
 
                         if (HasComponent<PowerPillComponent>(entity) && !HasComponent<KillComponent>(entity))

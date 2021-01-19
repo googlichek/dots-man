@@ -61,6 +61,7 @@ namespace Game.Scripts
                     if (kill.Timer <= 0)
                         entityCommandBuffer.DestroyEntity(entity);
                 })
+                .WithStructuralChanges()
                 .WithoutBurst()
                 .Run();
         }

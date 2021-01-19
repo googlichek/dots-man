@@ -14,22 +14,22 @@ namespace Game.Scripts
 
         public void PlaySFXRequest(string name)
         {
-            var audio = Resources.Load<AudioClip>("SFX/" + name);
-            if (audio == null)
+            var audioClip = Resources.Load<AudioClip>("SFX/" + name);
+            if (audioClip == null)
                 return;
 
-            AudioSource.PlayClipAtPoint(audio, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(audioClip, Vector3.zero);
         }
-        
+
         public void PlayMusicRequest(string name)
         {
-            var audio = Resources.Load<AudioClip>("Music/" + name);
-            if (audio == null)
+            var audioClip = Resources.Load<AudioClip>("Music/" + name);
+            if (audioClip == null)
                 return;
 
-            if (MusicSource.clip != audio)
+            if (MusicSource.clip != audioClip)
             {
-                MusicSource.clip = audio;
+                MusicSource.clip = audioClip;
                 MusicSource.Play();
             }
         }

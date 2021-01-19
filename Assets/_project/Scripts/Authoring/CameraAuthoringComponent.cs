@@ -10,7 +10,7 @@ namespace Game.Scripts
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            dstManager.AddComponentData(entity, new CameraComponent() {});
+            dstManager.AddComponentData(entity, new CameraComponent());
             conversionSystem.AddHybridComponent(AudioListener);
         }
     }

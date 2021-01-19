@@ -1,4 +1,5 @@
 using Unity.Entities;
+using Unity.Transforms;
 
 namespace Game.Scripts
 {
@@ -39,8 +40,22 @@ namespace Game.Scripts
             var entityCommandBuffer = entityCommandBufferSystem.CreateCommandBuffer();
 
             Entities
-                .ForEach((Entity entity, int entityInQueryIndex, ref KillComponent kill) =>
+                .ForEach((Entity entity, ref KillComponent kill, in Translation tranlation, in Rotation rotation) =>
                 {
+                    if (HasComponent<OnKillComponent>(entity))
+                    {
+                        var onKill = GetComponent<OnKillComponent>(entity);
+                        AudioManager.Instance.PlaySFXRequest(onKill.SFXName.Value);
+                        GameManager.Instance.AddPoints(onKill.PointValue);
+
+                        if (EntityManager.Exists(onKill.SpawnPrefab))
+                        {
+                            var spawnedEntity = entityCommandBuffer.Instantiate(onKill.SpawnPrefab);
+                            entityCommandBuffer.AddComponent(spawnedEntity, tranlation);
+                            entityCommandBuffer.AddComponent(spawnedEntity, rotation);
+                        }
+                    }
+
                     kill.Timer -= deltaTime;
 
                     if (kill.Timer <= 0)
@@ -48,8 +63,6 @@ namespace Game.Scripts
                 })
                 .WithoutBurst()
                 .Run();
-
-            entityCommandBufferSystem.AddJobHandleForProducer(Dependency);
         }
     }
 }
